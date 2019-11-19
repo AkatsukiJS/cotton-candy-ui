@@ -1,9 +1,7 @@
-/* @flow */
-/** @jsx jsx */
-import type { Node } from 'react'
 import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
+import { css } from '@emotion/core'
 import { Label, Icon } from '../../../components'
+import theme from '../../../theme'
 
 type Props = {
   /** Title */
@@ -11,14 +9,18 @@ type Props = {
   /** Node Html to expand */
   children: Node,
   /** onExpand handler */
-  onExpand: () => mixed,
+  onExpand: () => void,
   /** Flag to expand */
   isExpanded: boolean,
   /** className */
   className?: string
 }
 
-const style = ({ theme }) => css`
+interface IStyle {
+  theme: typeof theme
+}
+
+const style = ({ theme }: IStyle) => css`
   display: block;
   box-sizing: border-box;
   padding: 0.5rem 0.75rem;

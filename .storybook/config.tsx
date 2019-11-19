@@ -1,4 +1,4 @@
-import theme from '../src/theme.js'
+import theme from '../src/theme.ts'
 import React from 'react'
 import { withKnobs } from '@storybook/addon-knobs'
 import { withInfo } from '@storybook/addon-info'
@@ -23,7 +23,7 @@ addDecorator(
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
 
-const req = require.context('../src/components', true, /.stories.js$/)
+const req = require.context('../src/components/atoms/Button', true, /.stories.tsx$/)
 function loadStories () {
   req.keys().forEach(filename => req(filename))
 }

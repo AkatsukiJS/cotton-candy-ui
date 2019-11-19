@@ -1,4 +1,3 @@
-// @flow
 export default {
   color: {
     LightCrimson: '#FF005D',

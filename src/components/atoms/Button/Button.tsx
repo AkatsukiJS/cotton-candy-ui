@@ -1,8 +1,7 @@
-/* @flow */
 /** @jsx jsx */
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
-
+import theme from '../../../theme'
 type Kind = 'primary' | 'secondary' | 'invisible'
 type Size = 'small' | 'medium' | 'large'
 
@@ -12,14 +11,20 @@ type Props = {
   /** Label of button */
   children: string,
   /** onClick handler  */
-  onClick?: () => mixed,
+  onClick?: () => void,
   /** Size of button */
   size?: Size,
   /** Dropshadow */
   hasDropShadow?: boolean
 }
 
-const style = ({ theme, kind, icon, hasDropShadow, size }) => css`
+interface IStyle {
+  theme?: typeof theme
+}
+
+/** Button component */
+const StyledButton = styled.button<Props & IStyle>(
+({ theme, kind, hasDropShadow, size }) => css`
   
   ${
   kind === 'invisible'
@@ -73,11 +78,9 @@ const style = ({ theme, kind, icon, hasDropShadow, size }) => css`
   }
 
 `
-const StyledButton = styled.button`
-  ${style}
-`
 
-/** Button component */
+)
+
 const Button = (props: Props) => <StyledButton {...props} />
 
 Button.defaultProps = {
